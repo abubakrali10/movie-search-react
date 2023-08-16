@@ -7,16 +7,16 @@
 .searchBar input {
 	background-color: #1C212E;
 	width: 100%;
-	min-height: 40px;
+	min-height: 50px;
 	border-radius: 5px;
 	border: none;
 	outline: none;
-	color: #444955;
+	color: #595e68;
 	padding-left: 10px;
 }
 
 .searchBar input::placeholder {
-	color: #444955;
+	color: #595e68;
 }
 
 /* SearchBar.module.css */
@@ -27,5 +27,4 @@
 	transform: translateY(-50%);
 	width: 20px; /* Adjust the icon width */
 	height: 20px; /* Adjust the icon height */
-	fill: white;
   }  
