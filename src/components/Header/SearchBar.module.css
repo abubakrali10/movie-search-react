@@ -1,0 +1,31 @@
+.searchBar {
+	position:relative;
+	width: 50%;
+	margin: 15px 0;
+}
+
+.searchBar input {
+	background-color: #1C212E;
+	width: 100%;
+	min-height: 40px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	color: #444955;
+	padding-left: 10px;
+}
+
+.searchBar input::placeholder {
+	color: #444955;
+}
+
+/* SearchBar.module.css */
+.searchIcon {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	width: 20px; /* Adjust the icon width */
+	height: 20px; /* Adjust the icon height */
+	fill: white;
+  }  

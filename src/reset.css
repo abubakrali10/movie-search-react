@@ -1,0 +1,28 @@
+/* Reset.css */
+/* Reset some default styles to create a consistent baseline */
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+	margin: 0;
+	padding: 0;
+  }
+  
+  *, *::before, *::after {
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: Arial, sans-serif;
+  }
+  
+  ol, ul {
+	list-style: none;
+  }
+  
+  a {
+	text-decoration: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+  }
+    
