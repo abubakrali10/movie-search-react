@@ -1,7 +1,6 @@
 import styles from './SearchBar.module.css';
 import searchIcon from '../../assets/icons8-search.svg';
 import React, { useState } from 'react';
-import { getPopularMovies } from '../../services/api';
 
 function SearchBar() {
 	const [searchQuery, setSearchQuery] = useState('');
@@ -12,7 +11,12 @@ function SearchBar() {
 
 	const handleSearchSubmit = async (e) => {
 		e.preventDefault();
-		const popularMovies = await getPopularMovies();
+	
+		if (searchQuery.trim() === '') {
+			return;
+		}
+	
+
 	}
 
 	return (
