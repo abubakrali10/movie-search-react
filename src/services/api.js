@@ -10,9 +10,38 @@ export const getPopularMovies = async () => {
 				api_key: API_KEY,
 			},
 		});
-		return res.data.reults;
+		return res.data.results;
 	} catch (err) {
 		console.error('Error fetching popular movies', err);
+		return [];
+	}
+};
+
+export const searchMovies = async (query) => {
+	try {
+	  const response = await axios.get(`${URL}/search/movie`, {
+		params: {
+		  api_key: API_KEY,
+		  query: query,
+		},
+	  });
+	  return response.data.results;
+	} catch (error) {
+	  console.error('Error searching movies:', error);
+	  return [];
+	}
+};
+
+export const getGenres = async () => {
+	try {
+		const res = await axios.get(`${URL}/genre/movie/list`, {
+			params: {
+				api_key: API_KEY,
+			},
+		});
+		return res.data.genres;
+	} catch (err) {
+		console.error('Error fetching genres', err);
 		return [];
 	}
 };
