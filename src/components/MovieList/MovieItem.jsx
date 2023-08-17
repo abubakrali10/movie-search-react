@@ -1,25 +1,50 @@
+import React from 'react';
+import PropTypes from 'prop-types'
 import styles from './MovieList.module.css';
 import starIcon from '../../assets/star-shape.svg';
+import { useEffect, useState } from "react"
+import { getGenres } from '../../services/api';
 
-function MovieItem() {
+
+function MovieItem({ movie }) {
+	const [genres, setGenres] = useState([]);
+
+	useEffect(() => {
+		async function fetchGenres() {
+		const genresData = await getGenres();
+		setGenres(genresData);
+		}
+		fetchGenres();
+	}, []);
+
+	const movieGenres = movie.genre_ids.map(genreId => {
+		const matchingGenre = genres.find(genre => genre.id === genreId);
+		return matchingGenre ? matchingGenre.name : '';
+	});
+
 	return (
 		<article className={styles.movieItem}>
 			<div className={styles.rateBadge}>
 				<img src={starIcon} />
-				<span>7.8</span>
+				<span>{movie.vote_average}</span>
 			</div>
 			<div className={styles.posterContainer}>
 				<img
-					src="https://img.fruugo.com/product/8/14/14592148_max.jpg"
+					src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
 					className={styles.poster}
 				/>
 			</div>
 			<div className={styles.movieDetails}>
-				<h2>Inception</h2>
-				<p>2015</p>
+				<h2 className={styles.movieName}>{movie.title}</h2>
+				<p className={styles.year}>{movie.release_date}</p>
+				<p className={styles.genre}>{movieGenres.join(', ')}</p>
 			</div>
 		</article>
 	)
 }
+
+MovieItem.propTypes = {
+	movie: PropTypes.object.isRequired,
+};
 
 export default MovieItem
