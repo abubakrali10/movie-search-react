@@ -1,20 +1,25 @@
 .movieList {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	gap: 30px;
+	padding: 0 25px;
+	padding-bottom: 10px;
 }
 
 .movieItem {
-	border-radius: 5px;
+	border-radius: 10px;
 	position: relative;
+}
 
+.movieItem:hover .movieDetails {
+	background: rgb(45,136,214);
 }
 
 .rateBadge {
 	background-color: black;
 	position: absolute;
 	opacity: 85%;
-	width: 35%;
+	width: 30%;
 	z-index: 100;
 	color: white;
 	top: 30px;
@@ -35,4 +40,30 @@
 .poster {
 	width: 100%;
 	height: auto;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.movieDetails {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	transition: all 0.5s ease-out;
+	padding: 10px;
+	font-family: 'Roboto', sans-serif;
+}
+
+
+.movieDetails h2 {
+	color: #fff;
+	font-size: 22px;
+}
+
+.year {
+	color: #d1d1d1;
+	font-size: 10px;
+}
+
+.genre {
+	color: white;
+	font-size: 12px;
 }
