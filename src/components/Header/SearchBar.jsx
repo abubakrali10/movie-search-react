@@ -1,23 +1,25 @@
 import styles from './SearchBar.module.css';
 import searchIcon from '../../assets/icons8-search.svg';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-function SearchBar() {
+function SearchBar({ onSearch }) {
 	const [searchQuery, setSearchQuery] = useState('');
-
+  
 	const handleSearch = (e) => {
-		setSearchQuery(e.target.value);
+	  setSearchQuery(e.target.value);
 	}
-
-	const handleSearchSubmit = async (e) => {
-		e.preventDefault();
-	
-		if (searchQuery.trim() === '') {
-			return;
-		}
-	
-
+  
+	const handleSearchSubmit = (e) => {
+	  e.preventDefault();
+  
+	  if (searchQuery.trim() === '') {
+		return;
+	  }
+  
+	  onSearch(searchQuery);
 	}
+  
 
 	return (
 		<div className={styles.searchBar}>
@@ -39,5 +41,9 @@ function SearchBar() {
 		</div>
 	)
 }
+
+SearchBar.propTypes = {
+	onSearch: PropTypes.func.isRequired,
+};  
 
 export default SearchBar
