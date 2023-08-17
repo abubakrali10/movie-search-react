@@ -1,6 +1,7 @@
 import styles from './SearchBar.module.css';
 import searchIcon from '../../assets/icons8-search.svg';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { getPopularMovies } from '../../services/api';
 
 function SearchBar() {
 	const [searchQuery, setSearchQuery] = useState('');
@@ -9,9 +10,14 @@ function SearchBar() {
 		setSearchQuery(e.target.value);
 	}
 
+	const handleSearchSubmit = async (e) => {
+		e.preventDefault();
+		const popularMovies = await getPopularMovies();
+	}
+
 	return (
 		<div className={styles.searchBar}>
-			<form>
+			<form onSubmit={handleSearchSubmit}>
 				<input
 					type='text'
 					placeholder='Search for movies...'
